@@ -19,6 +19,11 @@ export default Ember.Component.extend({
     this.set('mediumEditor', _editor);
     return this.setContent();
   },
+  willDestroyElement: function() {
+    var _editor = this.get('mediumEditor')
+    _editor.destroy();
+    this.destroy('mediumEditor');
+  },
   focusOut: function() {
     return this.set('isUserTyping', false);
   },
